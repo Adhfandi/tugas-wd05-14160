@@ -1,37 +1,5 @@
-@extends('layout.pagemain')
+@extends('layout.main')
 @section('title', 'Pasien Periksa Page')
-
-@section('sidebar')
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                                                                       with font-awesome or any other icon font library -->
-            <li class="nav-item ">
-                <a href={{ url('/pasien') }} class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item menu-open">
-                <a href={{ url('/pasien/periksa') }} class="nav-link active">
-                    <p>
-                        Periksa
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href={{ url('/pasien/riwayat') }} class="nav-link">
-                    <p>
-                        Riwayat
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-@endsection
 
 @section('isi')
     <div class="content-wrapper">
@@ -51,31 +19,72 @@
             </div>
         </div>
 
-        <div class="row mt-3">
-            <div class="col-md-6">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h3 class="card-title">Periksa</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="dokter">Pilih Dokter</label>
+                                        <select class="form-control" id="dokter">
+                                            <option>Value 1</option>
+                                            <option>Value 2</option>
+                                            <option>Value 3</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="card-title">Periksa</h3>
+                    <div class="card-header">
+                        <h3 class="card-title">Riwayat Periksa</h3>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nama">Nama Anda</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Input your name">
-                            </div>
-                            <div class="form-group">
-                                <label for="dokter">Pilih Dokter</label>
-                                <select class="form-control" id="dokter">
-                                    <option>Value 1</option>
-                                    <option>Value 2</option>
-                                    <option>Value 3</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID Periksa</th>
+                                    <th>Dokter</th>
+                                    <th>Tanggal Periksa</th>
+                                    <th>Catatan</th>
+                                    <th>Obat</th>
+                                    <th>Biaya Periksa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>P001</td>
+                                    <td>Andi</td>
+                                    <td>24-03-2025</td>
+                                    <td>Perlu banyak tidur</td>
+                                    <td>Obat tidur</td>
+                                    <td>170000</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>P002</td>
+                                    <td>Andi</td>
+                                    <td>26-03-2025</td>
+                                    <td>Perlu banyak olahraga</td>
+                                    <td>Ashwagandha</td>
+                                    <td>200000</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 @endsection

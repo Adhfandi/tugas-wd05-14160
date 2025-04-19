@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('periksa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pasien')->constrained('users');
-            $table->foreignId('id_dokter')->constrained('users');
-            $table->dateTime('tgl_periksa');
+            $table->foreignId('id_pasien')-> constrained ('users');
+            $table->foreignId('id_dokter')-> constrained ('users');
+            $table->datetime('tgl_periksa');
             $table->text('catatan');
             $table->integer('biaya_periksa');
             $table->timestamps();

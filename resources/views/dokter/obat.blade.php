@@ -8,7 +8,7 @@
             <!-- Add icons to the links using the .nav-icon class
                                                                    with font-awesome or any other icon font library -->
             <li class="nav-item ">
-                <a href="{{ url('/dokter') }}" class="nav-link ">
+                <a href={{ url('/dokter') }} class="nav-link ">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dokter
@@ -16,14 +16,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/dokter/periksa') }}" class="nav-link">
+                <a href={{ url('/dokter/periksa') }} class="nav-link">
                     <p>
                         Periksa
                     </p>
                 </a>
             </li>
             <li class="nav-item menu-open">
-                <a href="{{ url('dokter/obat') }}" class="nav-link active">
+                <a href={{ url('dokter/obat') }} class="nav-link active">
                     <p>
                         Obat
                     </p>
