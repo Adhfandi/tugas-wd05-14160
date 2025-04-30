@@ -196,7 +196,7 @@
             <img src={{ asset("dist/img/user2-160x160.jpg") }} class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
           </div>
         </div>
 
@@ -227,7 +227,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('dokter.periksa') }}"
+            <a href="{{ route('dokter.memeriksa') }}"
             class="nav-link {{ request()->routeIs('dokter.periksa') ? 'active' : '' }}">
             <p>
               Periksa

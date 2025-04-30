@@ -74,14 +74,8 @@
             </div>
           </div>
 
-          {{-- Pilih Role: dokter / pasien --}}
-          <div class="mb-3">
-            <select name="role" placeholder="Pilih Role" class="form-control" required>
-              <option value="">Pilih Role</option>
-              <option value="dokter">Dokter</option>
-              <option value="pasien">Pasien</option>
-            </select>
-          </div>
+          <!-- Mengganti select dengan input hidden -->
+          <input type="hidden" name="role" value="pasien">
 
           <div class="row">
             <div class="col-8">

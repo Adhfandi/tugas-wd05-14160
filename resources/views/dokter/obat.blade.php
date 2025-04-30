@@ -1,147 +1,124 @@
-@extends('layout.pagemain')
-@section('title', 'Dokter Obat Page')
+@extends('components.layout')
 
-@section('sidebar')
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                                                                   with font-awesome or any other icon font library -->
-            <li class="nav-item ">
-                <a href={{ url('/dokter') }} class="nav-link ">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dokter
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href={{ url('/dokter/periksa') }} class="nav-link">
-                    <p>
-                        Periksa
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item menu-open">
-                <a href={{ url('dokter/obat') }} class="nav-link active">
-                    <p>
-                        Obat
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </nav>
+@section('nav-content')
+    <ul class="nav">
+        <li class="nav-item"><a href="{{ route('dokter.dashboard') }}" class="nav-link"><i
+                    class="nav-icon fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li class="nav-item"><a href="{{ route('dokter.obat') }}" class="nav-link"> <i class="nav-icon fas fa-th"></i>
+                Obat</a></li>
+        <li class="nav-item"><a href="{{ route('dokter.periksa') }}" class="nav-link"><i
+                    class="nav-icon fas fa-book"></i> Periksa</a></li>
+    </ul>
 @endsection
 
-@section('isi')
-    <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dokter</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
+
+@section('content')
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-12">
+                <h1 class="display-4 text-primary">Daftar Obat</h1>
+                <p class="lead text-muted">Kelola obat-obat yang tersedia di klinik Anda dengan mudah dan efisien.</p>
             </div>
         </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Periksa</h3>
-                        </div>
-                        <form>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="namaObat">Nama Obat</label>
-                                    <input type="text" class="form-control" id="namaObat" placeholder="Input obat's name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="kemasan">Kemasan</label>
-                                    <input type="text" class="form-control" id="kemasan" placeholder="Input kemasan's name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="harga">Harga</label>
-                                    <input type="number" class="form-control" id="harga" placeholder="Input the price">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Tambah Obat</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <!-- Form Tambah Obat -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Tambah Obat</h5>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">List Obat</h3>
-                            <div class="card-tools">
-                                <input type="text" class="form-control float-right" placeholder="Search">
-                            </div>
-                        </div>
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>NO</th>
-                                        <th>ID Obat</th>
-                                        <th>Nama Obat</th>
-                                        <th>Kemasan</th>
-                                        <th>Harga</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>B001</td>
-                                        <td>Paracetamol</td>
-                                        <td>Dus</td>
-                                        <td>20000</td>
-                                        <td>
-                                            <button class="btn btn-warning">Edit</button>
-                                            <button class="btn btn-danger">Hapus</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>B002</td>
-                                        <td>Obat Tidur</td>
-                                        <td>Pil</td>
-                                        <td>10000</td>
-                                        <td>
-                                            <button class="btn btn-warning">Edit</button>
-                                            <button class="btn btn-danger">Hapus</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>B003</td>
-                                        <td>Actived</td>
-                                        <td>Sirup</td>
-                                        <td>50000</td>
-                                        <td>
-                                            <button class="btn btn-warning">Edit</button>
-                                            <button class="btn btn-danger">Hapus</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="card-body">
+                <form action="{{ url('dokter/obat') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nama_obat">Nama Obat</label>
+                        <input type="text" name="nama_obat" id="nama_obat" class="form-control" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="kemasan">Kemasan</label>
+                        <input type="text" name="kemasan" id="kemasan" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="number" name="harga" id="harga" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Tambah Obat</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tampilkan pesan sukses atau error -->
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert-success">
+                <strong>Berhasil!</strong> {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert-error">
+                <strong>Gagal!</strong> {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+        <!-- Tabel Obat -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Daftar Obat yang Tersedia</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Obat</th>
+                        <th>Kemasan</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($obat as $key => $item)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $item->nama_obat }}</td>
+                            <td>{{ $item->kemasan }}</td>
+                            <td>Rp {{ number_format((float) $item->harga, 2, ',', '.') }}</td>
+                            <td>
+                                <a href="{{ url('dokter/obat/edit/' . $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ url('dokter/obat/delete/' . $item->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus obat ini?')">Hapus</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center">Tidak ada data obat</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+    <!-- Add the following script to hide the alerts after 2 seconds -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                const successAlert = document.getElementById("alert-success");
+                const errorAlert = document.getElementById("alert-error");
+
+                if (successAlert) {
+                    successAlert.classList.add("fade");
+                    successAlert.classList.remove("show");
+                }
+                if (errorAlert) {
+                    errorAlert.classList.add("fade");
+                    errorAlert.classList.remove("show");
+                }
+            }, 2000);
+        });
+    </script>
 @endsection
