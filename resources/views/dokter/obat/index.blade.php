@@ -75,7 +75,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<<<<<<< HEAD
                                     @foreach ($obat as $obat)
+=======
+                                    @foreach ($obats as $obat)
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $obat->id }}</td>

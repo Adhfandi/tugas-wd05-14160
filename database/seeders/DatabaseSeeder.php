@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Poli;
 use App\Models\Dokter;
+=======
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // Buat Poli
         $poliGigi = Poli::create([
             'nama_poli' => 'Poli Gigi',
@@ -67,6 +71,12 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AdminSeeder::class,
             JadwalPeriksaSeeder::class,
+=======
+        // User::factory(10)->create();
+
+        $this->call([
+            UserSeeder::class,
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
         ]);
     }
 }

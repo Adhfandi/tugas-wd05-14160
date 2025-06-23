@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\DaftarPoli;
 use App\Models\JadwalPeriksa;
 use App\Models\Poli;
@@ -12,11 +13,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+=======
+use Illuminate\Http\Request;
+use App\Models\Periksa;
+use App\Models\User;
+
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
 
 class PeriksaController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
         $polis = Poli::all();
         $riwayat = DaftarPoli::where('pasien_id', Auth::user()->pasien->id)
             ->with(['poli', 'jadwal.dokter'])
@@ -68,10 +76,23 @@ class PeriksaController extends Controller
             Log::error('Error dalam getJadwal: ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
+=======
+        // Ambil data pemeriksaan dari database
+        $periksas = Periksa::with('detailPeriksa.obat', 'dokter')->get();
+
+        $dokters = User::where('role', 'dokter')->get();
+        return view('pasien.periksa')->with('periksas', $periksas)->with('dokters', $dokters);
+    }
+
+    public function create()
+    {
+        return view('pasien.periksa.create');
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $request->validate([
             'poli_id' => 'required|exists:polis,id',
             'jadwal_id' => 'required|exists:jadwal_periksa,id',
@@ -137,3 +158,46 @@ class PeriksaController extends Controller
         }
     }
 }
+=======
+        // Ambil user yang sedang login
+        $user = auth()->user();
+
+
+        // Validasi data yang diterima
+        $request->validate([
+            'dokter_id' => 'required|exists:users,id'
+        ]);
+
+        // Simpan data pemeriksaan ke database
+        Periksa::create([
+            'pasien_id' => $user->id,
+            'dokter_id' => $request->input('dokter_id'),
+            'status' => 'Menunggu',
+        ]);
+
+        // Redirect ke halaman pemeriksaan
+        return redirect()->route('pasien.periksa')->with('success', 'Pemeriksaan berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        // Ambil data pemeriksaan berdasarkan ID
+        // ...
+        return view('pasien.periksa.edit', compact('periksa'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi dan update data pemeriksaan
+        // ...
+        return redirect()->route('pasien.periksa')->with('success', 'Pemeriksaan berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        // Hapus data pemeriksaan
+        // ...
+        return redirect()->route('pasien.periksa')->with('success', 'Pemeriksaan berhasil dihapus.');
+    }
+}
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layout.main')
 @section('content')
 <div class="content-wrapper">
@@ -603,4 +604,10 @@
     </section>
     <!-- /.content -->
   </div>
+=======
+// extend digunakan utnuk menyambungkan kode dari main 
+@extends ('layout.main')
+@section('Content')
+
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
 @endsection

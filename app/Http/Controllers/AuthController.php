@@ -6,19 +6,27 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Pasien;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+=======
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
 
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
+<<<<<<< HEAD
         return view('auth.login');
+=======
+        return view('auth.login'); // pastikan file ada di resources/views/login.blade.php
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 
     public function login(Request $request)
     {
+<<<<<<< HEAD
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -34,21 +42,44 @@ class AuthController extends Controller
                 return redirect()->route('dokter.dashboard')->with('success', 'Selamat datang, Dokter!');
             } else {
                 return redirect()->route('pasien.dashboard')->with('success', 'Selamat datang!');
+=======
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+            if ($user->role === 'dokter') {
+                return redirect()->route('dokter.dashboard');
+            } elseif ($user->role === 'pasien') {
+                return redirect()->route('pasien.dashboard');
+            } else {
+                return redirect()->route('login');
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
             }
         }
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
+<<<<<<< HEAD
         ])->withInput($request->only('email', 'remember'));
+=======
+        ])->onlyInput('email');
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 
     public function showRegisterForm()
     {
+<<<<<<< HEAD
         return view('auth.register');
+=======
+        return view('auth.register'); // pastikan file ada di resources/views/register.blade.php
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 
     public function register(Request $request)
     {
+<<<<<<< HEAD
         // Log untuk debugging
         Log::info('Register method dipanggil');
         Log::info('Data request:', $request->all());
@@ -141,10 +172,32 @@ class AuthController extends Controller
                 ->withInput()
                 ->with('debug', 'Error: ' . $e->getMessage());
         }
+=======
+        $request->validate([
+            'nama' => 'required|string',
+            'alamat' => 'required|string',
+            'no_hp' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
+            'role' => 'required|in:dokter,pasien',
+        ]);
+
+        User::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 
     public function logout(Request $request)
     {
+<<<<<<< HEAD
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -153,5 +206,11 @@ class AuthController extends Controller
         $request->session()->flush();
         
         return redirect('/')->with('success', 'Anda berhasil logout');
+=======
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     }
 }

@@ -11,7 +11,11 @@ class DetailPeriksa extends Model
     protected $fillable = [
         'id_periksa',
         'id_obat'
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> e7e5b0519c966654fddd06263bc881dc9ebe0be2
     ];
     public function periksa()
     {
